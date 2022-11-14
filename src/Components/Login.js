@@ -27,6 +27,7 @@ export default function Login() {
   return (
     <>
       <div className='container pt-5'>
+        <h1 className="display-1 pb-2">My Space</h1>
         <div className='card'>
           <div className='card-header'>Login</div>
           <div className='card-body'>
@@ -51,6 +52,7 @@ export default function Login() {
                   type='password'
                   className='form-control'
                   id='password'
+                  autoComplete='on'
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 />

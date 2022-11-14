@@ -24,16 +24,27 @@ export default function Products() {
 
   return (
     <>
-      <button
-        type='button'
-        className='btn btn-primary'
-        onClick={() => navigate('/dashboard/products/new')}
-      >
-        Add
-      </button>
-      {products.map((product) => (
-        <Product key={product._id} product={product} onDelete={onDelete} />
-      ))}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-12'>
+            <h1 className='display-4 pb-2'>Products</h1>
+            <button
+              type='button'
+              className='btn btn-primary btn-lg float-end'
+              onClick={() => navigate('/dashboard/products/new')}
+            >
+              Add
+            </button>
+          </div>
+        </div>
+        <div className='row mt-5'>
+          {products.map((product) => (
+            <div className='col-3' key={product._id}>
+              <Product product={product} onDelete={onDelete} />
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }

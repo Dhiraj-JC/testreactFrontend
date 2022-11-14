@@ -5,8 +5,8 @@ import { customPOST } from '../utilities';
 export default function CreateProduct() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [quantity, setQuantity] = useState();
-  const [price, setPrice] = useState();
+  const [quantity, setQuantity] = useState(1);
+  const [price, setPrice] = useState(1);
 
   const navigate = useNavigate();
 
@@ -38,6 +38,7 @@ export default function CreateProduct() {
                 className='form-control'
                 id='productName'
                 placeholder='Product Name'
+                maxLength={40}
                 value={name}
                 onChange={(event) => setName(event.target.value)}
               />
@@ -52,6 +53,7 @@ export default function CreateProduct() {
                 id='productDescription'
                 placeholder='Product Description'
                 value={description}
+                maxLength={70}
                 onChange={(event) => setDescription(event.target.value)}
               />
             </div>

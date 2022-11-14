@@ -20,7 +20,7 @@ export default function UpdateProduct() {
       setQuantity(product.quantity);
       setPrice(product.price);
     });
-  },[]);
+  },[id]);
 
   function onsubmit(event) {
     event.preventDefault();

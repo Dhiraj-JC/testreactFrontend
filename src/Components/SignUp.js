@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import { useNavigate,Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { customPOST } from '../utilities';
 
 export default function SignUp() {
@@ -25,6 +25,7 @@ export default function SignUp() {
   return (
     <>
       <div className='container pt-5'>
+        <h1 className='display-1 pb-2'>My Space</h1>
         <div className='card'>
           <div className='card-header'>Sign Up</div>
           <div className='card-body'>
@@ -49,6 +50,7 @@ export default function SignUp() {
                   type='password'
                   className='form-control'
                   id='password'
+                  autoComplete='on'
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 />
@@ -61,6 +63,7 @@ export default function SignUp() {
                   type='password'
                   className='form-control'
                   id='confirmPassword'
+                  autoComplete='on'
                   value={confirmPassword}
                   onChange={(event) => setConfirmPassword(event.target.value)}
                 />
@@ -68,7 +71,11 @@ export default function SignUp() {
               <button type='submit' className='btn btn-primary'>
                 Submit
               </button>
-              <Link to='/login' className='card-link' style={{marginLeft: '10px'}}>
+              <Link
+                to='/login'
+                className='card-link'
+                style={{ marginLeft: '10px' }}
+              >
                 Login
               </Link>
             </form>
@@ -77,5 +84,4 @@ export default function SignUp() {
       </div>
     </>
   );
-
 }
