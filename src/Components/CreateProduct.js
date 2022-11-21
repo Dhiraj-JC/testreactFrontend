@@ -10,17 +10,18 @@ export default function CreateProduct() {
 
   const navigate = useNavigate();
 
-  function onsubmit(event) {
+  function onSubmit(event) {
     event.preventDefault();
+
     const request = {
       name,
       description,
       quantity,
-      price
+      price,
     };
 
-    customPOST('products',request)
-    .then(response => navigate('/dashboard/products'));
+    customPOST('products', request)
+      .then(response => navigate('/dashboard/products'));
   }
 
   return (
@@ -28,7 +29,7 @@ export default function CreateProduct() {
       <div className='card'>
         <h5 className='card-header'>Add</h5>
         <div className='card-body'>
-          <form onSubmit={onsubmit}>
+          <form onSubmit={onSubmit}>
             <div className='form-group mt-2'>
               <label htmlFor='productName' className='mb-2'>
                 Product Name
@@ -53,7 +54,6 @@ export default function CreateProduct() {
                 id='productDescription'
                 placeholder='Product Description'
                 value={description}
-                maxLength={70}
                 onChange={(event) => setDescription(event.target.value)}
               />
             </div>
@@ -96,5 +96,5 @@ export default function CreateProduct() {
         </div>
       </div>
     </div>
-  );
+  )
 }

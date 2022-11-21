@@ -1,46 +1,51 @@
-import { useNavigate,useParams } from "react-router-dom";
-import { useState,useEffect } from "react";
-import { customPUT,customGET } from "../utilities";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { customGET, customPUT } from "../utilities";
 
 export default function UpdateProduct() {
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
 
   const navigate = useNavigate();
-  let { id } = useParams();
 
-  useEffect(()=> {
+  const { id } = useParams();
+
+  useEffect(() => {
     customGET(`products/${id}`)
-    .then(response => {
-      const product = response.data;
-      setName(product.name);
-      setDescription(product.description);
-      setQuantity(product.quantity);
-      setPrice(product.price);
-    });
-  },[id]);
+      .then(response => {
+        const { name, description, quantity, price } = response.data;
 
-  function onsubmit(event) {
+        setName(name);
+        setDescription(description);
+        setQuantity(quantity);
+        setPrice(price);
+      })
+  }, [id]);
+
+  function onSubmit(event) {
     event.preventDefault();
+
     const request = {
       name,
       description,
       quantity,
       price
-    };
+    }
 
-    customPUT(`products/${id}`,request)
-    .then(response => navigate('/dashboard/products'));
+    customPUT(`products/${id}`, request)
+      .then(response => navigate('/dashboard/products'));
   }
+
 
   return (
     <div className='container mt-5'>
       <div className='card'>
         <h5 className='card-header'>Update</h5>
         <div className='card-body'>
-          <form onSubmit={onsubmit}>
+          <form onSubmit={onSubmit} >
             <div className='form-group mt-2'>
               <label htmlFor='productName' className='mb-2'>
                 Product Name
@@ -106,5 +111,5 @@ export default function UpdateProduct() {
         </div>
       </div>
     </div>
-  );
+  )
 }

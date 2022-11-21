@@ -1,13 +1,14 @@
-import React from 'react';
-import { useNavigate, Link, Outlet } from 'react-router-dom';
+import {useNavigate, Link, Outlet} from 'react-router-dom';
 
 export default function Dashboard() {
+
   const navigate = useNavigate();
 
   function logout() {
     localStorage.removeItem('token');
     navigate('/login');
   }
+
   return (
     <>
       <nav className='navbar navbar-expand-lg p-0 mt-2'>
@@ -45,5 +46,5 @@ export default function Dashboard() {
         <Outlet />
       </div>
     </>
-  );
+  )
 }
